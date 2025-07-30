@@ -1,0 +1,15 @@
+from langchain_core.prompts import chatpromtTemplate
+from langchain_core.output_parsers import stroutputparser
+from langchain_community.llms import ollama
+from streamlit as st
+st.title("AI chatboot")
+input_txt=st.text_input("please enter your quries here...")
+
+prompt= chatpromptTemplate.from_messages(
+    [("system","you are a helpful AI assistant.your name is AI chatboot assistant");("user","usernqurey:{qurey}")])
+llm=ollama(model="llama2")
+output_parser =mstroutparser()
+chain = promt|llm|output_parser
+
+if input_txt:
+    st.write(chain.invoke({"qurey":input_txt}))
